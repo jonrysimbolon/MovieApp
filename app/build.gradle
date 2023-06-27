@@ -16,10 +16,9 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
         buildConfigField("String", "Authorization", '"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzU3MThkNjg5MzVjYjNjYWQ5OWViODVkZDJlZGVhNiIsInN1YiI6IjYxNGE4ODgyOWE5ZTIwMDA2MzFhOTQ3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZyqU9Lvo_vPonY1WSPVgm9jBD1cGECh142skPLMBz1Q"')
+        buildConfigField("String", "Base_Url", '"https://api.themoviedb.org/3/"')
     }
 
     buildTypes {
