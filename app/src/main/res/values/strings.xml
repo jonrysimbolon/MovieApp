@@ -2,4 +2,6 @@
     <string name="app_name">Movie</string>
     <string name="home_label">Movie</string>
     <string name="splash_label">Splash</string>
+    <string name="reload">Reload</string>
+    <string name="desc_failed">Description failed</string>
 </resources>
