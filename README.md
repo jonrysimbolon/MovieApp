@@ -1,12 +1,12 @@
-# MOVIE for test
+# Movie for Test
+## The project have purpose to prerequisite for getting a job
+### Powered by [TMDB-API](https://api.themoviedb.org)
 <br/>
-The project have purpose to prerequisite for getting a job
+:. This project consists of:
 <br/>
-This project consists of
-<br/>
-[] List of genres for movies
-[] List of movies
-[] Information about a movie
-[] Users review
-[] Youtube trailer
-[] Unit and UI Testing that cover positive and negative cases
+- [ ] List of genres for movies
+- [ ] List of movies
+- [ ] Information about a movie
+- [ ] Users review
+- [ ] Youtube trailer
+- [ ] Unit and UI Testing that cover positive and negative cases
