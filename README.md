@@ -1,5 +1,5 @@
 # Movie for Test
-**The project have purpose to prerequisite for getting a job**
+**The project has purpose to prerequisite for getting a job**
 
 _Powered by [TMDB-API](https://api.themoviedb.org)_
 ### Task
