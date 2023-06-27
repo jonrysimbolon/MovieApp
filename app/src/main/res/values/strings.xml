@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TestSkillMovie</string>
     <string name="home_label">Movie</string>
+    <string name="splash_label">Splash</string>
 </resources>
