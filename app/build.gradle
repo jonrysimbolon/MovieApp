@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id "androidx.navigation.safeargs"
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -15,6 +18,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "Authorization", '"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzU3MThkNjg5MzVjYjNjYWQ5OWViODVkZDJlZGVhNiIsInN1YiI6IjYxNGE4ODgyOWE5ZTIwMDA2MzFhOTQ3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZyqU9Lvo_vPonY1WSPVgm9jBD1cGECh142skPLMBz1Q"')
     }
 
     buildTypes {
@@ -30,15 +35,55 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'androidx.navigation:navigation-testing:2.6.0'
+    implementation 'androidx.activity:activity-ktx:1.7.2'
+    implementation 'androidx.fragment:fragment-ktx:1.6.0'
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.11'
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11'
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:5.0.0-alpha.11"
+    androidTestImplementation "com.squareup.okhttp3:okhttp-tls:5.0.0-alpha.11"
+    androidTestImplementation('com.adevinta.android:barista:4.2.0') {
+        exclude group: 'org.jetbrains.kotlin'
+    }
+    implementation 'androidx.room:room-ktx:2.6.0-alpha02'
+    implementation 'androidx.room:room-paging:2.6.0-alpha02'
+    kapt 'androidx.room:room-compiler:2.6.0-alpha02'
+    implementation 'io.insert-koin:koin-core:3.4.2'
+    implementation 'io.insert-koin:koin-core-coroutines:3.4.1'
+    implementation 'io.insert-koin:koin-test:3.4.1'
+    implementation 'io.insert-koin:koin-android:3.4.2'
+    implementation 'io.insert-koin:koin-androidx-navigation:3.4.2'
+    implementation 'androidx.paging:paging-runtime-ktx:3.1.1'
+    testImplementation 'org.mockito:mockito-core:4.5.1'
+    testImplementation 'org.mockito:mockito-inline:4.4.0'
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+    androidTestImplementation 'androidx.arch.core:core-testing:2.2.0'
+    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.0.3"
+    debugImplementation "androidx.fragment:fragment-testing:1.6.0"
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.5.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.5.1'
+    androidTestImplementation "org.hamcrest:hamcrest:2.2"
 }
