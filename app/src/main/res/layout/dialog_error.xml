@@ -7,7 +7,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageFailed"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/_0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,9 +18,9 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/descFailed"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/_8dp"
         android:gravity="center"
         android:text="@string/desc_failed"
         android:textColor="@color/red_500"
@@ -30,9 +30,9 @@
 
     <Button
         android:id="@+id/reloadBtn"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/_0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/_8dp"
         android:text="@string/reload"
         app:layout_constraintEnd_toEndOf="@id/imageFailed"
         app:layout_constraintStart_toStartOf="@id/imageFailed"

@@ -10,9 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.jonrysimbolon.testskillmovie.R
 import com.jonrysimbolon.testskillmovie.utils.dialog.CustomDialog
 
-class Loading: CustomDialog {
-    private var dialog: Dialog? = null
-    private var constraintLayout: ConstraintLayout? = null
+class Loading: CustomDialog() {
 
     override fun init(context: Context) {
         context.let {

@@ -17,9 +17,10 @@ class Application : Application() {
             modules(
                 gsonModule,
                 remoteModule(BuildConfig.Base_Url),
-                localModule,
                 glideModule,
                 repositoryModule,
+                dialogModule,
+                adapterModule,
                 viewModelModule,
             )
         }

@@ -1,6 +1,7 @@
 package com.jonrysimbolon.testskillmovie.ui
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavDestination
@@ -35,15 +36,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configureActionBar(destination: NavDestination) {
-        if (destination.id == R.id.splashFragment) {
-            supportActionBar?.hide()
-        } else {
-            supportActionBar?.show()
+        supportActionBar?.apply {
+            if (destination.id == R.id.splashFragment) hide() else show()
         }
     }
+
     private fun configureUpButton(destination: NavDestination) {
         supportActionBar?.setDisplayHomeAsUpEnabled(
-            !(destination.id == R.id.homeFragment || destination.id == R.id.splashFragment)
+            !(destination.id == R.id.splashFragment || destination.id == R.id.categoryFragment)
         )
     }
 
@@ -57,13 +57,20 @@ class MainActivity : AppCompatActivity() {
 
     fun onBack() {
         navHostFragment.findNavController().let {
-            if(it.currentDestination?.id != R.id.splashFragment) {
-                when (it.currentDestination?.id) {
-                    R.id.homeFragment -> finish()
-                    else -> it.popBackStack()
-                }
+            when (it.currentDestination?.id) {
+                R.id.splashFragment -> {}
+                R.id.categoryFragment -> finish()
+                else -> it.popBackStack()
             }
         }
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBack()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

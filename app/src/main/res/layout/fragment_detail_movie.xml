@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.DetailMovieFragment"
+    android:id="@+id/nsV">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/backgroundIv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_300dp"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/posterIv"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_200dp"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintBottom_toBottomOf="@id/backgroundIv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/backgroundIv" />
+
+        <ImageView
+            android:contentDescription="@null"
+            android:id="@+id/userReviewIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_reviews"
+            app:layout_constraintBottom_toBottomOf="@id/posterIv"
+            app:layout_constraintEnd_toStartOf="@id/posterIv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/backgroundIv" />
+
+        <ImageView
+            android:contentDescription="@null"
+            android:id="@+id/trailerIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_trailer"
+            app:layout_constraintBottom_toBottomOf="@id/posterIv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/posterIv"
+            app:layout_constraintTop_toBottomOf="@id/backgroundIv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/releaseDateTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:text="@string/release_date"
+            android:drawablePadding="@dimen/_8dp"
+            app:drawableStartCompat="@drawable/ic_calendar"
+            app:layout_constraintTop_toBottomOf="@id/posterIv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/runTimeTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_2dp"
+            android:text="@string/run_time"
+            android:drawablePadding="@dimen/_8dp"
+            app:drawableStartCompat="@drawable/ic_time"
+            app:layout_constraintTop_toBottomOf="@id/releaseDateTv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/taglineTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_2dp"
+            android:text="@string/tag_line"
+            android:drawablePadding="@dimen/_8dp"
+            app:drawableStartCompat="@drawable/ic_tagline"
+            app:layout_constraintTop_toBottomOf="@id/runTimeTv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/overViewTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_8dp"
+            android:text="@string/run_time"
+            android:drawablePadding="@dimen/_8dp"
+            app:drawableStartCompat="@drawable/ic_overview"
+            app:layout_constraintTop_toBottomOf="@id/taglineTv" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

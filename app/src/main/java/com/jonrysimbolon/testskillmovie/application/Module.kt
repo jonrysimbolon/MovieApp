@@ -1,16 +1,32 @@
 package com.jonrysimbolon.testskillmovie.application
 
-import androidx.room.Room
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.gson.Gson
 import com.jonrysimbolon.testskillmovie.BuildConfig
-import com.jonrysimbolon.testskillmovie.data.local.Database
+import com.jonrysimbolon.testskillmovie.adapter.CategoryAdapter
+import com.jonrysimbolon.testskillmovie.adapter.MovieAdapter
+import com.jonrysimbolon.testskillmovie.adapter.TrailerAdapter
+import com.jonrysimbolon.testskillmovie.adapter.UserReviewAdapter
 import com.jonrysimbolon.testskillmovie.data.remote.ApiService
 import com.jonrysimbolon.testskillmovie.repository.category.CategoryRepository
 import com.jonrysimbolon.testskillmovie.repository.category.CategoryRepositoryImpl
-import com.jonrysimbolon.testskillmovie.ui.splash.SplashViewModel
-import com.jonrysimbolon.testskillmovie.utils.movie_database
+import com.jonrysimbolon.testskillmovie.repository.detailmovie.DetailMovieRepository
+import com.jonrysimbolon.testskillmovie.repository.detailmovie.DetailMovieRepositoryImpl
+import com.jonrysimbolon.testskillmovie.repository.movie.MovieRepository
+import com.jonrysimbolon.testskillmovie.repository.movie.MovieRepositoryImpl
+import com.jonrysimbolon.testskillmovie.repository.review.ReviewRepository
+import com.jonrysimbolon.testskillmovie.repository.review.ReviewRepositoryImpl
+import com.jonrysimbolon.testskillmovie.repository.trailer.TrailerRepository
+import com.jonrysimbolon.testskillmovie.repository.trailer.TrailerRepositoryImpl
+import com.jonrysimbolon.testskillmovie.utils.dialog.CustomDialog
+import com.jonrysimbolon.testskillmovie.utils.dialog.ui.Failure
+import com.jonrysimbolon.testskillmovie.utils.dialog.ui.Loading
+import com.jonrysimbolon.testskillmovie.viewmodel.CategoryViewModel
+import com.jonrysimbolon.testskillmovie.viewmodel.DetailMovieViewModel
+import com.jonrysimbolon.testskillmovie.viewmodel.MovieViewModel
+import com.jonrysimbolon.testskillmovie.viewmodel.TrailerViewModel
+import com.jonrysimbolon.testskillmovie.viewmodel.UserReviewViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -50,13 +66,6 @@ fun remoteModule(url: String) = module {
     single { retrofit(url).create(ApiService::class.java) }
 }
 
-val localModule = module {
-    single {
-        Room.databaseBuilder(androidContext(), Database::class.java, movie_database)
-            .fallbackToDestructiveMigration().build()
-    }
-}
-
 val gsonModule = module {
     single { Gson() }
 }
@@ -70,11 +79,58 @@ val repositoryModule = module {
     single<CategoryRepository> {
         CategoryRepositoryImpl(
             get(),
-            get()
+        )
+    }
+    single<MovieRepository> {
+        MovieRepositoryImpl(
+            get(),
+        )
+    }
+    single<DetailMovieRepository>{
+        DetailMovieRepositoryImpl(
+            get(),
+        )
+    }
+    single<TrailerRepository>{
+        TrailerRepositoryImpl(
+            get(),
+        )
+    }
+    single<ReviewRepository>{
+        ReviewRepositoryImpl(
+            get(),
         )
     }
 }
 
+val dialogModule = module {
+    single<CustomDialog> {
+        Loading()
+    }
+    single<CustomDialog> {
+        Failure()
+    }
+}
+
+val adapterModule = module {
+    single {
+        CategoryAdapter()
+    }
+    single {
+        MovieAdapter(get())
+    }
+    single {
+        TrailerAdapter()
+    }
+    single {
+        UserReviewAdapter()
+    }
+}
+
 val viewModelModule = module {
-    viewModelOf(::SplashViewModel)
+    viewModelOf(::CategoryViewModel)
+    viewModelOf(::MovieViewModel)
+    viewModelOf(::DetailMovieViewModel)
+    viewModelOf(::TrailerViewModel)
+    viewModelOf(::UserReviewViewModel)
 }

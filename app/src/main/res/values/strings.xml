@@ -1,7 +1,24 @@
 <resources>
     <string name="app_name">Movie</string>
-    <string name="home_label">Movie</string>
     <string name="splash_label">Splash</string>
     <string name="reload">Reload</string>
     <string name="desc_failed">Description failed</string>
+    <string name="movie_name">Movie name</string>
+    <string name="retry">Retry</string>
+    <string name="category_label">Category</string>
+    <string name="movie_label">Movie</string>
+    <string name="detail_movie">Detail movie</string>
+    <string name="category_name_item">Category name</string>
+    <string name="release_date">0000–00–00</string>
+    <string name="run_time">Run time</string>
+    <string name="run_time_value">%1$s minutes</string>
+    <string name="tag_line">Tag line</string>
+    <string name="trailer_label">Trailer</string>
+    <string name="review_label">Review</string>
+    <string name="video_publish_at">0000–00–00T00:00:00.000Z</string>
+    <string name="video_name">Video name</string>
+    <string name="author">Author</string>
+    <string name="content">Content</string>
+    <string name="createAt">Create. </string>
+    <string name="updateAt">Update. </string>
 </resources>

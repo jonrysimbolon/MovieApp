@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.splash.SplashFragment">
+    tools:context=".ui.SplashFragment">
 
     <ImageView
         android:id="@+id/splashImage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
         android:contentDescription="@null"
         android:src="@mipmap/ic_launcher_round"
         app:layout_constraintDimensionRatio="3:1"

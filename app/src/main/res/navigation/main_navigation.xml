@@ -7,24 +7,97 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.jonrysimbolon.testskillmovie.ui.splash.SplashFragment"
+        android:name="com.jonrysimbolon.testskillmovie.ui.SplashFragment"
         android:label="@string/splash_label"
         tools:layout="@layout/fragment_splash" >
         <action
-            android:id="@+id/action_splashFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
+            android:id="@+id/action_splashFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
-            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.jonrysimbolon.testskillmovie.ui.MovieFragment"
+        android:label="@string/movie_label"
+        tools:layout="@layout/fragment_movie" >
+        <action
+            android:id="@+id/action_movieFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailMovieFragment"
+        android:name="com.jonrysimbolon.testskillmovie.ui.DetailMovieFragment"
+        android:label="@string/detail_movie"
+        tools:layout="@layout/fragment_detail_movie" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_detailMovieFragment_to_userReviewFragment"
+            app:destination="@id/userReviewFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_detailMovieFragment_to_trailerFragment"
+            app:destination="@id/trailerFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.jonrysimbolon.testskillmovie.ui.CategoryFragment"
+        android:label="@string/category_label"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_categoryFragment_to_movieFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true"  />
+            app:destination="@id/movieFragment" />
     </fragment>
-
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.jonrysimbolon.testskillmovie.ui.home.HomeFragment"
-        android:label="@string/home_label"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/userReviewFragment"
+        android:name="com.jonrysimbolon.testskillmovie.ui.UserReviewFragment"
+        android:label="@string/review_label"
+        tools:layout="@layout/fragment_user_review">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/trailerFragment"
+        android:name="com.jonrysimbolon.testskillmovie.ui.TrailerFragment"
+        android:label="@string/trailer_label"
+        tools:layout="@layout/fragment_trailer" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
 </navigation>

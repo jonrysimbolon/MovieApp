@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_8dp"
+    app:cardElevation="@dimen/_2dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_12dp">
+
+        <TextView
+            android:id="@+id/authorTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/author"
+            android:textSize="@dimen/_20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:textSize="@dimen/_11sp"
+            android:id="@+id/createAtTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4dp"
+            android:text="@string/video_publish_at"
+            app:layout_constraintTop_toBottomOf="@id/authorTv" />
+
+        <TextView
+            android:textSize="@dimen/_11sp"
+            android:id="@+id/updateAtTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/video_publish_at"
+            app:layout_constraintTop_toBottomOf="@id/createAtTv" />
+
+        <TextView
+            android:id="@+id/contentTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:text="@string/content"
+            app:layout_constraintTop_toBottomOf="@id/updateAtTv" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

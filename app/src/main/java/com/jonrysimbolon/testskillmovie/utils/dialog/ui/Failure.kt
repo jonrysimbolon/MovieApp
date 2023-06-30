@@ -12,11 +12,7 @@ import com.google.android.material.textview.MaterialTextView
 import com.jonrysimbolon.testskillmovie.R
 import com.jonrysimbolon.testskillmovie.utils.dialog.CustomDialog
 
-class Failure: CustomDialog {
-    private var dialog: Dialog? = null
-    private var constraintLayout: ConstraintLayout? = null
-    private var reloadAction: (() -> Unit)? = null
-
+class Failure : CustomDialog() {
     override fun init(context: Context) {
         context.let {
             dialog = Dialog(it)
@@ -42,12 +38,12 @@ class Failure: CustomDialog {
         }
     }
 
-    fun setDescription(description: String) {
+    override fun setDescription(description: String) {
         val descriptionTextView = dialog?.findViewById<MaterialTextView>(R.id.descFailed)
         descriptionTextView?.text = description
     }
 
-    fun setReloadClickListener(function: (() -> Unit)?) {
+    override fun setReloadClickListener(function: (() -> Unit)?) {
         this.reloadAction = function
     }
 
