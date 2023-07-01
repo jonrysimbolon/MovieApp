@@ -1,5 +1,4 @@
-# Movie for Test
-**The project has purpose to prerequisite for getting a job**
+# MovieApp
 
 _with [TMDB-API](https://api.themoviedb.org)_
 ### Task
