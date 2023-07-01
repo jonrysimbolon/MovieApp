@@ -5,8 +5,8 @@ _with [TMDB-API](https://api.themoviedb.org)_
 - [X] List of genres for movies
 - [X] List of movies
 - [X] Information about a movie
-- [X] Users review
-- [X] Youtube trailer
+- [X] List of user reviews
+- [X] List of trailer's videos
 - [x] Endless scroll in list movies and user reviews
 - [X] Unit and UI Testing that cover positive and negative cases
 
