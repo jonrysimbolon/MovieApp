@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.jonrysimbolon.testskillmovie.data.remote.model.VideoModel
 import com.jonrysimbolon.testskillmovie.repository.trailer.TrailerRepository
 import com.jonrysimbolon.testskillmovie.utils.ResultStatus
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TrailerViewModel constructor(
@@ -17,7 +18,7 @@ class TrailerViewModel constructor(
     val trailer: LiveData<ResultStatus<List<VideoModel>>> get() = _trailer
 
     fun getAllVideos(movieId: Int){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO){
             _trailer.postValue(ResultStatus.Loading)
             val responseData = trailerRepository.getAll(movieId)
             try {

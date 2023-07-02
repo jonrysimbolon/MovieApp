@@ -18,7 +18,7 @@ class UserReviewViewModel constructor(
     val userReviewLivePaging: LiveData<PagingData<UserReviewModel>> get() = _userReviewLivePaging
 
     fun getAllReviews(movieId: Int) {
-        viewModelScope.launch {
+        viewModelScope.launch{
             reviewRepository.getAllPagingData(movieId)
                 .cachedIn(viewModelScope)
                 .observeForever { data ->

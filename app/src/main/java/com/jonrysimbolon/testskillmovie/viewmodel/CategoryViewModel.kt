@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.jonrysimbolon.testskillmovie.data.remote.model.CategoryModel
 import com.jonrysimbolon.testskillmovie.repository.category.CategoryRepository
 import com.jonrysimbolon.testskillmovie.utils.ResultStatus
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CategoryViewModel constructor(
@@ -21,7 +22,7 @@ class CategoryViewModel constructor(
     }
 
     private fun getAll() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _category.postValue(ResultStatus.Loading)
             val responseData = categoryRepository.getAll()
             try {

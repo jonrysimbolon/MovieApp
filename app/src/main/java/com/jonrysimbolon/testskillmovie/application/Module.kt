@@ -71,8 +71,8 @@ val gsonModule = module {
 }
 
 val glideModule = module {
-    single { Glide.with(androidContext()).setDefaultRequestOptions(get()) }
     single { RequestOptions() }
+    single { Glide.with(androidContext()).setDefaultRequestOptions(get()) }
 }
 
 val repositoryModule = module {

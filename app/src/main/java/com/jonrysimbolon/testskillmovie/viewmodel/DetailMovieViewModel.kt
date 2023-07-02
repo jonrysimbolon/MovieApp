@@ -9,6 +9,7 @@ import com.jonrysimbolon.testskillmovie.data.remote.model.DetailMovieModel
 import com.jonrysimbolon.testskillmovie.repository.detailmovie.DetailMovieRepository
 import com.jonrysimbolon.testskillmovie.utils.ResultStatus
 import com.jonrysimbolon.testskillmovie.utils.responseGsonPattern
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class DetailMovieViewModel constructor(
@@ -20,7 +21,7 @@ class DetailMovieViewModel constructor(
     val detailMovie: LiveData<ResultStatus<DetailMovieModel>> get() = _detailMovie
 
     fun getDetailMovie(movieId: Int){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO){
             _detailMovie.postValue(ResultStatus.Loading)
             try {
                 val detailMovieResponse = detailMovieRepository.getAll(movieId)

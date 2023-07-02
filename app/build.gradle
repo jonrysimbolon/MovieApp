@@ -17,8 +17,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "Authorization", '"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYzU3MThkNjg5MzVjYjNjYWQ5OWViODVkZDJlZGVhNiIsInN1YiI6IjYxNGE4ODgyOWE5ZTIwMDA2MzFhOTQ3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZyqU9Lvo_vPonY1WSPVgm9jBD1cGECh142skPLMBz1Q"')
-        buildConfigField("String", "Base_Url", '"https://api.themoviedb.org/3/"')
+        buildConfigField("String", "Authorization", bearerApiKey)
+        buildConfigField("String", "Base_Url", urlApi)
     }
 
     buildTypes {
@@ -56,6 +56,8 @@ dependencies {
     implementation 'androidx.activity:activity-ktx:1.7.2'
     implementation 'androidx.fragment:fragment-ktx:1.6.0'
     implementation 'com.github.bumptech.glide:glide:4.15.1'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation "com.github.bumptech.glide:okhttp3-integration:4.13.0"
     implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -79,10 +81,10 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:4.5.1'
     testImplementation 'org.mockito:mockito-inline:4.4.0'
     testImplementation 'androidx.arch.core:core-testing:2.2.0'
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1'
     androidTestImplementation 'androidx.arch.core:core-testing:2.2.0'
-    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1"
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.0.3"
     debugImplementation "androidx.fragment:fragment-testing:1.6.0"
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'

@@ -2,6 +2,7 @@ package com.jonrysimbolon.testskillmovie.utils
 
 import android.widget.ImageView
 import com.bumptech.glide.RequestManager
+import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
@@ -37,12 +38,16 @@ fun String.withDateLongFormat(): String {
 }
 
 fun setImageUrl(glide: RequestManager, url: String, imageView: ImageView) {
-    glide
-        .load(image_path.plus(url))
-        .placeholder(R.drawable.ic_launcher_foreground)
-        .error(R.drawable.notfound)
-        .transition(DrawableTransitionOptions.withCrossFade())
-        .into(imageView)
+    try {
+        glide
+            .load(image_path.plus(url))
+            .placeholder(R.drawable.ic_launcher_foreground)
+            .error(R.drawable.notfound)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(imageView)
+    }catch (ge: GlideException){
+        ge.printStackTrace()
+    }
 }
 
 fun setImageUrlWithRadius(glide: RequestManager, url: String, radius: Int, imageView: ImageView) {

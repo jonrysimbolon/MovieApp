@@ -18,7 +18,7 @@ class MovieViewModel constructor(
     val movieLivePaging: LiveData<PagingData<MovieModel>> get() = _movieLivePaging
 
     fun getAllMovies(categoryId: String) {
-        viewModelScope.launch {
+        viewModelScope.launch{
             movieRepository.getAllPagingData(categoryId)
                 .cachedIn(viewModelScope)
                 .observeForever { data ->

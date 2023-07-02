@@ -18,13 +18,13 @@ class MoviePagingSourceImpl(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieModel> {
         return try {
-                val page = params.key ?: INITIAL_PAGE_INDEX
-                val responseData = remote.getAllMovies(page, idCategory).results
-                LoadResult.Page(
-                    data = responseData,
-                    prevKey = if (page == 1) null else page - 1,
-                    nextKey = if (responseData.isEmpty()) null else page + 1
-                )
+            val page = params.key ?: INITIAL_PAGE_INDEX
+            val responseData = remote.getAllMovies(page, idCategory).results
+            LoadResult.Page(
+                data = responseData,
+                prevKey = if (page == 1) null else page - 1,
+                nextKey = if (responseData.isEmpty()) null else page + 1
+            )
         } catch (exception: Exception) {
             return LoadResult.Error(exception)
         }
