@@ -14,11 +14,6 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-const val image_path = "https://image.tmdb.org/t/p/original"
-const val dateSimpleFormatFromServer = "yyyy-MM-dd"
-const val dateLongFormatFromServer = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-const val startSeconds: Float = 0f
-
 fun responseGsonPattern(gson: Gson, json: String?): ErrorModel =
     gson.fromJson(json, ErrorModel::class.java)
 

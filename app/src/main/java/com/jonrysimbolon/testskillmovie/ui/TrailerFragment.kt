@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.jonrysimbolon.testskillmovie.adapter.TrailerAdapter
-import com.jonrysimbolon.testskillmovie.data.remote.model.VideoModel
 import com.jonrysimbolon.testskillmovie.databinding.FragmentTrailerBinding
 import com.jonrysimbolon.testskillmovie.utils.ResultStatus
 import com.jonrysimbolon.testskillmovie.utils.dialog.CustomDialog
@@ -34,6 +33,7 @@ class TrailerFragment : Fragment() {
         val movieTitle = bundle.title
 
         requireActivity().title = movieTitle
+        binding.trailerRv.adapter = adapter
         viewModel.getAllVideos(movieId)
         viewModel.trailer.observe(viewLifecycleOwner) { result ->
             when (result) {
@@ -48,18 +48,11 @@ class TrailerFragment : Fragment() {
 
                 is ResultStatus.Success -> {
                     loadingDialog.show(false)
-                    showCategoriesUi(result.data)
+                    val data = result.data
+                    adapter.updateData(data)
                 }
             }
         }
 
     }
-
-    private fun showCategoriesUi(data: List<VideoModel>) {
-        binding.apply {
-            trailerRv.adapter = adapter
-            adapter.updateData(data)
-        }
-    }
-
 }

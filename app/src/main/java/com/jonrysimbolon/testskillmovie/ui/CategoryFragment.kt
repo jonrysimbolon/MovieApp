@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.jonrysimbolon.testskillmovie.adapter.CategoryAdapter
-import com.jonrysimbolon.testskillmovie.data.remote.model.CategoryModel
 import com.jonrysimbolon.testskillmovie.databinding.FragmentCategoryBinding
 import com.jonrysimbolon.testskillmovie.utils.ResultStatus
 import com.jonrysimbolon.testskillmovie.utils.dialog.CustomDialog
@@ -33,6 +32,15 @@ class CategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
+            categoryRv.adapter = adapter
+            adapter.onClickItem = { view, data ->
+                val toDetailFragment =
+                    CategoryFragmentDirections.actionCategoryFragmentToMovieFragment(
+                        data.id,
+                        data.name
+                    )
+                view.findNavController().navigate(toDetailFragment)
+            }
             viewModel.category.observe(viewLifecycleOwner) { result ->
                 when (result) {
                     ResultStatus.Loading -> {
@@ -46,24 +54,10 @@ class CategoryFragment : Fragment() {
 
                     is ResultStatus.Success -> {
                         loadingDialog.show(false)
-                        showCategoriesUi(result.data)
+                        val data = result.data
+                        adapter.updateData(data)
                     }
                 }
-            }
-        }
-    }
-
-    private fun showCategoriesUi(data: List<CategoryModel>) {
-        binding.apply {
-            categoryRv.adapter = adapter
-            adapter.updateData(data)
-            adapter.onClickItem = { view, data ->
-                val toDetailFragment =
-                    CategoryFragmentDirections.actionCategoryFragmentToMovieFragment(
-                        data.id,
-                        data.name
-                    )
-                view.findNavController().navigate(toDetailFragment)
             }
         }
     }

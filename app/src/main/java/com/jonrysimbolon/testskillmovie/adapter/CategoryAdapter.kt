@@ -13,7 +13,7 @@ class CategoryAdapter constructor(
     var onClickItem: ((View, CategoryModel) -> Unit)? = null
 ) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
-    private val oldList = ArrayList<CategoryModel>()
+    private val oldList: ArrayList<CategoryModel> = ArrayList()
 
     fun updateData(newList: List<CategoryModel>) {
         val diffCallback = CustomDiffCallback(
@@ -52,9 +52,9 @@ class CategoryAdapter constructor(
         val item = oldList[position]
         holder.bind(item)
 
-        holder.itemView.setOnClickListener {
+        holder.itemView.setOnClickListener { view ->
             onClickItem?.let { categoryModel ->
-                categoryModel(it, item)
+                categoryModel(view, item)
             }
         }
     }
