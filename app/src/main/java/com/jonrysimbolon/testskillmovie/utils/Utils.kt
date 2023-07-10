@@ -24,6 +24,7 @@ fun String.withDateSimpleFormat(): String {
     val date: Date = inputFormat.parse(this) ?: return ""
     return outputFormat.format(date)
 }
+
 fun String.withDateLongFormat(): String {
     val inputFormat = SimpleDateFormat(dateLongFormatFromServer, Locale.getDefault())
     val outputFormat =
@@ -40,7 +41,7 @@ fun setImageUrl(glide: RequestManager, url: String, imageView: ImageView) {
             .error(R.drawable.notfound)
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(imageView)
-    }catch (ge: GlideException){
+    } catch (ge: GlideException) {
         ge.printStackTrace()
     }
 }
@@ -53,4 +54,14 @@ fun setImageUrlWithRadius(glide: RequestManager, url: String, radius: Int, image
         .error(R.drawable.notfound)
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(imageView)
+}
+
+fun checkResourceFailedToClose() {
+    try {
+        Class.forName(dalvikCloseGuard)
+            .getMethod(setEnabled, Boolean::class.javaPrimitiveType)
+            .invoke(null, true)
+    } catch (e: ReflectiveOperationException) {
+        throw RuntimeException(e)
+    }
 }
