@@ -17,6 +17,27 @@ class DetailMovieViewModel constructor(
     private val gson: Gson,
 ) : ViewModel() {
 
+    /**
+     * Make plan to combine list trailer to this viewmodel
+     *
+
+        private val _trailer: MutableLiveData<ResultStatus<List<VideoModel>>> = MutableLiveData()
+        val trailer: LiveData<ResultStatus<List<VideoModel>>> get() = _trailer
+
+        fun getAllVideos(movieId: Int){
+            viewModelScope.launch(Dispatchers.IO){
+            _trailer.postValue(ResultStatus.Loading)
+            val responseData = trailerRepository.getAll(movieId)
+            try {
+                _trailer.postValue(ResultStatus.Success(responseData))
+            } catch (e: Exception) {
+                e.printStackTrace()
+                _trailer.postValue(ResultStatus.Error(e.message.toString()))
+            }
+        }
+
+     */
+
     private val _detailMovie: MutableLiveData<ResultStatus<DetailMovieModel>> = MutableLiveData()
     val detailMovie: LiveData<ResultStatus<DetailMovieModel>> get() = _detailMovie
 
