@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import com.jonrysimbolon.testskillmovie.adapter.CategoryAdapter
 import com.jonrysimbolon.testskillmovie.databinding.FragmentCategoryBinding
 import com.jonrysimbolon.testskillmovie.utils.ResultStatus
 import com.jonrysimbolon.testskillmovie.utils.dialog.CustomDialog
 import com.jonrysimbolon.testskillmovie.viewmodel.CategoryViewModel
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
@@ -41,21 +45,25 @@ class CategoryFragment : Fragment() {
                     )
                 view.findNavController().navigate(toDetailFragment)
             }
-            viewModel.category.observe(viewLifecycleOwner) { result ->
-                when (result) {
-                    ResultStatus.Loading -> {
-                        loadingDialog.show(true)
-                    }
+            viewLifecycleOwner.lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.category.collect { result ->
+                        when (result) {
+                            ResultStatus.Loading -> {
+                                loadingDialog.show(true)
+                            }
 
-                    is ResultStatus.Error -> {
-                        loadingDialog.show(false)
-                        failureDialog.show(true)
-                    }
+                            is ResultStatus.Error -> {
+                                loadingDialog.show(false)
+                                failureDialog.show(true)
+                            }
 
-                    is ResultStatus.Success -> {
-                        loadingDialog.show(false)
-                        val data = result.data
-                        adapter.updateData(data)
+                            is ResultStatus.Success -> {
+                                loadingDialog.show(false)
+                                val data = result.data
+                                adapter.updateData(data)
+                            }
+                        }
                     }
                 }
             }
