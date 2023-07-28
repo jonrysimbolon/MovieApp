@@ -21,3 +21,5 @@ _with [TMDB-API](https://api.themoviedb.org)_
 - [x] Mockito
 - [x] Espresso
 - [x] [Android youtube player](https://github.com/PierfrancescoSoffritti/android-youtube-player)
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/jonrysimboZ)
