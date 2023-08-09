@@ -3,6 +3,7 @@ package com.jonrysimbolon.testskillmovie.application
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.jonrysimbolon.testskillmovie.BuildConfig
 import com.jonrysimbolon.testskillmovie.adapter.CategoryAdapter
 import com.jonrysimbolon.testskillmovie.adapter.MovieAdapter
@@ -67,7 +68,10 @@ fun remoteModule(url: String) = module {
 }
 
 val gsonModule = module {
-    single { Gson() }
+    single<Gson> {
+        GsonBuilder()
+            .create()
+    }
 }
 
 val glideModule = module {
