@@ -34,9 +34,11 @@ class DetailMovieFragment : Fragment() {
     ): View = binding.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         val bundle = DetailMovieFragmentArgs.fromBundle(arguments as Bundle)
         val movieId = bundle.id
         val movieTitle = bundle.title
+
         viewModel.getDetailMovie(movieId)
         requireActivity().title = movieTitle
         viewModel.detailMovie.observe(viewLifecycleOwner) { result ->

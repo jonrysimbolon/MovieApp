@@ -43,6 +43,11 @@ class TrailerAdapter : RecyclerView.Adapter<TrailerAdapter.ViewHolder>() {
         }
     }
 
+    override fun getItemId(position: Int): Long {
+        val listData = oldList[position]
+        return listData.id.toLong()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(
             ItemTrailerBinding.inflate(LayoutInflater.from(parent.context), parent, false)

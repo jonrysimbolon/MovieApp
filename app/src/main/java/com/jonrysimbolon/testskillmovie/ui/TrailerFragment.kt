@@ -33,6 +33,7 @@ class TrailerFragment : Fragment() {
         val movieTitle = bundle.title
 
         requireActivity().title = movieTitle
+        adapter.hasStableIds()
         binding.trailerRv.adapter = adapter
         viewModel.getAllVideos(movieId)
         viewModel.trailer.observe(viewLifecycleOwner) { result ->
