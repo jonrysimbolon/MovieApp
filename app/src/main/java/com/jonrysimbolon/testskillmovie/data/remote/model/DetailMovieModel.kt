@@ -2,22 +2,23 @@ package com.jonrysimbolon.testskillmovie.data.remote.model
 
 
 import com.google.gson.annotations.SerializedName
+import com.jonrysimbolon.base.model.BaseModel
 
 data class DetailMovieModel(
     @SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String = "",
     @SerializedName("id")
-    val id: Int,
+    override val id: Int = 0,
     @SerializedName("overview")
-    val overview: String,
+    val overview: String = "",
     @SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String = "",
     @SerializedName("release_date")
-    val releaseDate: String,
+    val releaseDate: String = "",
     @SerializedName("runtime")
-    val runtime: Int,
+    val runtime: Int = 0,
     @SerializedName("tagline")
-    val tagline: String,
+    val tagline: String = "",
     @SerializedName("title")
-    val title: String
-)
+    val title: String = ""
+): BaseModel<Int>

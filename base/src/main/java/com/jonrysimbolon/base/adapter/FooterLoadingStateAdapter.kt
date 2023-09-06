@@ -1,4 +1,4 @@
-package com.jonrysimbolon.testskillmovie.adapter
+package com.jonrysimbolon.base.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jonrysimbolon.testskillmovie.databinding.ItemLoadingBinding
+import com.jonrysimbolon.base.databinding.ItemLoadingBinding
 
 class FooterLoadingStateAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<FooterLoadingStateAdapter.BottomLoadingStateViewHolder>() {

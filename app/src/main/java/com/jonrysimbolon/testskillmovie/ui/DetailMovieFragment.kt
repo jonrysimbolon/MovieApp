@@ -6,14 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.RequestManager
 import com.jonrysimbolon.testskillmovie.R
 import com.jonrysimbolon.testskillmovie.data.remote.model.DetailMovieModel
 import com.jonrysimbolon.testskillmovie.databinding.FragmentDetailMovieBinding
 import com.jonrysimbolon.testskillmovie.utils.ResultStatus
 import com.jonrysimbolon.testskillmovie.utils.dialog.CustomDialog
 import com.jonrysimbolon.testskillmovie.utils.setImageUrl
-import com.jonrysimbolon.testskillmovie.utils.setImageUrlWithRadius
 import com.jonrysimbolon.testskillmovie.utils.withDateSimpleFormat
 import com.jonrysimbolon.testskillmovie.viewmodel.DetailMovieViewModel
 import org.koin.android.ext.android.inject
@@ -26,7 +24,6 @@ class DetailMovieFragment : Fragment() {
 
     private val loadingDialog: CustomDialog by inject()
     private val failureDialog: CustomDialog by inject()
-    private val glide: RequestManager by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,15 +56,15 @@ class DetailMovieFragment : Fragment() {
     private fun whatNext(data: DetailMovieModel) {
         binding.apply {
             setImageUrl(
-                glide,
+                requireContext(),
                 data.backdropPath,
                 backgroundIv
             )
-            setImageUrlWithRadius(
-                glide,
+            setImageUrl(
+                requireContext(),
                 data.posterPath,
-                radius,
-                posterIv
+                posterIv,
+                radius
             )
             releaseDateTv.text = data.releaseDate.withDateSimpleFormat()
             runTimeTv.text = getString(R.string.run_time_value, data.runtime.toString())

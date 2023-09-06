@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.paging.LoadState
-import com.jonrysimbolon.testskillmovie.adapter.FooterLoadingStateAdapter
+import com.jonrysimbolon.base.adapter.FooterLoadingStateAdapter
 import com.jonrysimbolon.testskillmovie.adapter.MovieAdapter
 import com.jonrysimbolon.testskillmovie.data.remote.model.MovieModel
 import com.jonrysimbolon.testskillmovie.databinding.FragmentMovieBinding

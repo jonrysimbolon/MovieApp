@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.paging.LoadState
-import com.jonrysimbolon.testskillmovie.adapter.FooterLoadingStateAdapter
+import com.jonrysimbolon.base.adapter.FooterLoadingStateAdapter
 import com.jonrysimbolon.testskillmovie.adapter.UserReviewAdapter
 import com.jonrysimbolon.testskillmovie.databinding.FragmentUserReviewBinding
 import com.jonrysimbolon.testskillmovie.utils.dialog.CustomDialog

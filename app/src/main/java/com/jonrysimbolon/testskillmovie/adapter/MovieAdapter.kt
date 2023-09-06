@@ -2,18 +2,15 @@ package com.jonrysimbolon.testskillmovie.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.RequestManager
+import com.jonrysimbolon.base.adapter.BasePagingDataAdapter
 import com.jonrysimbolon.testskillmovie.data.remote.model.MovieModel
 import com.jonrysimbolon.testskillmovie.databinding.ItemMovieBinding
 import com.jonrysimbolon.testskillmovie.utils.setImageUrl
 
 class MovieAdapter constructor(
-    private val glide: RequestManager,
     var onClickItem: ((ViewHolder, MovieModel) -> Unit)? = null
-):PagingDataAdapter<MovieModel, MovieAdapter.ViewHolder>(DIFF_CALLBACK) {
+) : BasePagingDataAdapter<Int, MovieModel, MovieAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: ItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -30,7 +27,7 @@ class MovieAdapter constructor(
             holder.bind(item)
 
         setImageUrl(
-            glide,
+            holder.binding.ivItemPhoto.context,
             item?.posterPath.toString(),
             holder.binding.ivItemPhoto
         )
@@ -48,22 +45,4 @@ class MovieAdapter constructor(
         ViewHolder(
             ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
-
-    companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MovieModel>() {
-            override fun areItemsTheSame(
-                oldItem: MovieModel,
-                newItem: MovieModel
-            ): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun areContentsTheSame(
-                oldItem: MovieModel,
-                newItem: MovieModel
-            ): Boolean {
-                return oldItem.id == newItem.id
-            }
-        }
-    }
 }

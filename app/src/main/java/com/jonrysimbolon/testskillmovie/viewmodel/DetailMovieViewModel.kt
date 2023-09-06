@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 
 class DetailMovieViewModel constructor(
     private val detailMovieRepository: DetailMovieRepository,
-    private val gson: Gson,
 ) : ViewModel() {
 
     private val _detailMovie: MutableLiveData<ResultStatus<DetailMovieModel>> = MutableLiveData()
@@ -32,7 +31,6 @@ class DetailMovieViewModel constructor(
                     _detailMovie.postValue(
                         ResultStatus.Error(
                             responseGsonPattern(
-                                gson,
                                 detailMovieResponse
                                     .errorBody()
                                     ?.string()

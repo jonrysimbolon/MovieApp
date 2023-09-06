@@ -2,28 +2,30 @@ package com.jonrysimbolon.testskillmovie.data.remote.model
 
 
 import com.google.gson.annotations.SerializedName
+import com.jonrysimbolon.base.model.BaseModel
 
 data class ReviewResponses(
     @SerializedName("id")
-    val id: Int,
+    val id: Int = 0,
     @SerializedName("page")
-    val page: Int,
+    val page: Int = 0,
     @SerializedName("results")
-    val results: List<UserReviewModel>,
+    val results: List<UserReviewModel> = listOf(),
     @SerializedName("total_pages")
-    val totalPages: Int,
+    val totalPages: Int = 0,
     @SerializedName("total_results")
-    val totalResults: Int
+    val totalResults: Int = 0
 )
+
 data class UserReviewModel(
     @SerializedName("id")
-    val id: String,
+    override val id: String = "",
     @SerializedName("author")
-    val author: String,
+    val author: String = "",
     @SerializedName("content")
-    val content: String,
+    val content: String = "",
     @SerializedName("created_at")
-    val createdAt: String,
+    val createdAt: String = "",
     @SerializedName("updated_at")
-    val updatedAt: String,
-)
+    val updatedAt: String = "",
+) : BaseModel<String>

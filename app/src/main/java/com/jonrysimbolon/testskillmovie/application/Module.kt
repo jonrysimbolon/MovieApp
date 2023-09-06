@@ -1,8 +1,5 @@
 package com.jonrysimbolon.testskillmovie.application
 
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.google.gson.Gson
 import com.jonrysimbolon.testskillmovie.BuildConfig
 import com.jonrysimbolon.testskillmovie.adapter.CategoryAdapter
 import com.jonrysimbolon.testskillmovie.adapter.MovieAdapter
@@ -29,13 +26,12 @@ import com.jonrysimbolon.testskillmovie.viewmodel.TrailerViewModel
 import com.jonrysimbolon.testskillmovie.viewmodel.UserReviewViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val authorization = "Authorization"
+private const val AUTHORIZATION = "Authorization"
 
 private val loggingInterceptor = with(HttpLoggingInterceptor()) {
     if (BuildConfig.DEBUG)
@@ -47,7 +43,7 @@ private val loggingInterceptor = with(HttpLoggingInterceptor()) {
 private val client = with(OkHttpClient.Builder()) {
     addInterceptor { chain ->
         val request = chain.request().newBuilder().addHeader(
-            authorization, BuildConfig.Authorization
+            AUTHORIZATION, BuildConfig.Authorization
         ).build()
         chain.proceed(request)
     }
@@ -64,15 +60,6 @@ fun retrofit(url: String): Retrofit = with(Retrofit.Builder()) {
 
 fun remoteModule(url: String) = module {
     single { retrofit(url).create(ApiService::class.java) }
-}
-
-val gsonModule = module {
-    single { Gson() }
-}
-
-val glideModule = module {
-    single { RequestOptions() }
-    single { Glide.with(androidContext()).setDefaultRequestOptions(get()) }
 }
 
 val repositoryModule = module {
@@ -104,25 +91,25 @@ val repositoryModule = module {
 }
 
 val dialogModule = module {
-    single<CustomDialog> {
+    factory<CustomDialog> {
         Loading()
     }
-    single<CustomDialog> {
+    factory<CustomDialog> {
         Failure()
     }
 }
 
 val adapterModule = module {
-    single {
+    factory {
         CategoryAdapter()
     }
-    single {
-        MovieAdapter(get())
+    factory {
+        MovieAdapter()
     }
-    single {
+    factory {
         TrailerAdapter()
     }
-    single {
+    factory {
         UserReviewAdapter()
     }
 }
